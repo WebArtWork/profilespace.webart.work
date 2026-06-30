@@ -1,0 +1,1 @@
+import{i as r,v as i}from"./chunk-APTARWI3.js";var l=class e{_profile=i(null);profile=this._profile.asReadonly();set(o){this._profile.set(o)}clear(){this._profile.set(null)}static \u0275fac=function(t){return new(t||e)};static \u0275prov=r({token:e,factory:e.\u0275fac,providedIn:"root"})};export{l as a};
