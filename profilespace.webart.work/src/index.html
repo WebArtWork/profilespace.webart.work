@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Profile Space</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      try {
+        const storedMode = localStorage.getItem('app-mode');
+        const preferredMode =
+          storedMode === 'dark' || storedMode === 'light'
+            ? storedMode
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+        document.documentElement.setAttribute('data-mode', preferredMode);
+      } catch {}
+    </script>
+
+    <meta
+      name="description"
+      content="Profile Space — your digital profile in a QR code. Fill in once, share everywhere."
+    />
+    <meta name="author" content="Profile Space" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
+
+    <meta itemprop="name" content="Profile Space" />
+    <meta
+      itemprop="description"
+      content="Your digital profile in a QR code — fill in once, share everywhere."
+    />
+    <meta itemprop="image" content="https://profilespace.webart.work/logo.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Profile Space" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://profilespace.webart.work/" />
+    <meta property="og:title" content="Profile Space" />
+    <meta
+      property="og:description"
+      content="Your digital profile in a QR code — fill in once, share everywhere."
+    />
+    <meta property="og:image" content="https://profilespace.webart.work/logo.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Profile Space" />
+    <meta
+      name="twitter:description"
+      content="Your digital profile in a QR code — fill in once, share everywhere."
+    />
+    <meta name="twitter:image" content="https://profilespace.webart.work/logo.png" />
+    <meta name="twitter:image:src" content="https://profilespace.webart.work/logo.png" />
+
+    <link rel="canonical" href="https://profilespace.webart.work/" />
+    <link rel="icon" type="image/x-icon" href="favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

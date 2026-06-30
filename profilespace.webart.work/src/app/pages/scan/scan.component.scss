@@ -1,0 +1,156 @@
+:host {
+	display: block;
+	min-height: 100%;
+	background: linear-gradient(
+		180deg,
+		var(--c-bg-primary) 0%,
+		color-mix(in srgb, var(--c-bg-primary) 86%, var(--c-bg-secondary)) 100%
+	);
+	color: var(--c-text);
+}
+
+.card {
+	border-radius: calc(var(--radius-card) * 2);
+	border: 1px solid color-mix(in srgb, var(--c-border) 72%, transparent);
+	background: color-mix(in srgb, var(--c-bg-secondary) 84%, transparent);
+	box-shadow: var(--shadow-md);
+	backdrop-filter: blur(16px);
+}
+
+.back-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	border-radius: 999px;
+	border: 1px solid var(--c-border);
+	background: color-mix(in srgb, var(--c-bg-primary) 78%, transparent);
+	color: var(--c-text-muted);
+	text-decoration: none;
+	flex-shrink: 0;
+
+	&:hover {
+		color: var(--c-text-strong);
+	}
+}
+
+/* ── Viewport ────────────────────────────────────── */
+.viewport {
+	position: relative;
+	aspect-ratio: 1 / 1;
+	background: #000;
+	overflow: hidden;
+	border-radius: calc(var(--radius-card) * 2) calc(var(--radius-card) * 2) 0 0;
+}
+
+.camera-feed {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.hidden {
+	display: none;
+}
+
+/* ── Scan frame corners ──────────────────────────── */
+.scan-frame {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.scan-frame__corner {
+	position: absolute;
+	width: 2.5rem;
+	height: 2.5rem;
+	border-color: #fff;
+	border-style: solid;
+	border-width: 0;
+}
+
+$r: 6px;
+
+.scan-frame__corner--tl {
+	top: 18%;
+	left: 18%;
+	border-top-width: 3px;
+	border-left-width: 3px;
+	border-top-left-radius: $r;
+}
+
+.scan-frame__corner--tr {
+	top: 18%;
+	right: 18%;
+	border-top-width: 3px;
+	border-right-width: 3px;
+	border-top-right-radius: $r;
+}
+
+.scan-frame__corner--bl {
+	bottom: 18%;
+	left: 18%;
+	border-bottom-width: 3px;
+	border-left-width: 3px;
+	border-bottom-left-radius: $r;
+}
+
+.scan-frame__corner--br {
+	bottom: 18%;
+	right: 18%;
+	border-bottom-width: 3px;
+	border-right-width: 3px;
+	border-bottom-right-radius: $r;
+}
+
+/* Animated scan line */
+.scan-frame__line {
+	position: absolute;
+	left: 18%;
+	right: 18%;
+	height: 2px;
+	border-radius: 1px;
+	background: linear-gradient(90deg, transparent, var(--c-primary), transparent);
+	animation: scan-line 2s ease-in-out infinite;
+}
+
+@keyframes scan-line {
+	0%   { top: 20%; opacity: 0.9; }
+	50%  { top: 78%; opacity: 0.9; }
+	100% { top: 20%; opacity: 0.9; }
+}
+
+/* ── Overlay states ──────────────────────────────── */
+.overlay {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.65);
+	color: #fff;
+
+	&--error {
+		color: #fca5a5;
+	}
+}
+
+/* Spinner */
+.spinner {
+	width: 2.5rem;
+	height: 2.5rem;
+	border-radius: 999px;
+	border: 3px solid rgba(255, 255, 255, 0.2);
+	border-top-color: #fff;
+	animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+	to { transform: rotate(360deg); }
+}

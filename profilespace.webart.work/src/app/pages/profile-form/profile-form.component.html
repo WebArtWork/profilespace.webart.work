@@ -1,0 +1,154 @@
+<section class="page">
+	<div class="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-12">
+		<div class="card p-6 sm:p-8">
+			<div class="mb-6 flex items-center justify-between">
+				<h1 class="text-2xl font-semibold text-[var(--c-text-strong)]">Edit profile</h1>
+				<a routerLink="/" class="btn btn--ghost text-sm">← Back</a>
+			</div>
+
+			<form (submit)="onSubmit(); $event.preventDefault()" novalidate>
+				<div class="fields">
+					<!-- Name -->
+					<div class="field">
+						<label class="field__label" for="f-name">
+							Name <span class="field__required" aria-hidden="true">*</span>
+						</label>
+						<input
+							id="f-name"
+							type="text"
+							class="field__input"
+							[class.field__input--error]="profileForm.name().touched() && profileForm.name().invalid()"
+							placeholder="Denys"
+							[value]="profileForm.name().value()"
+							(input)="set('name', $any($event.target).value)"
+							(blur)="profileForm.name().markAsTouched()"
+						/>
+						@if (profileForm.name().touched() && profileForm.name().invalid()) {
+							<p class="field__error">Name is required</p>
+						}
+					</div>
+
+					<!-- Birthday -->
+					<div class="field">
+						<label class="field__label" for="f-birthday">Birthday</label>
+						<input
+							id="f-birthday"
+							type="date"
+							class="field__input"
+							[value]="profileForm.birthday().value()"
+							(input)="set('birthday', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Email -->
+					<div class="field">
+						<label class="field__label" for="f-email">Email</label>
+						<input
+							id="f-email"
+							type="email"
+							class="field__input"
+							placeholder="you@example.com"
+							[value]="profileForm.email().value()"
+							(input)="set('email', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Phone -->
+					<div class="field">
+						<label class="field__label" for="f-phone">Phone</label>
+						<input
+							id="f-phone"
+							type="tel"
+							class="field__input"
+							placeholder="+380..."
+							[value]="profileForm.phone().value()"
+							(input)="set('phone', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Website -->
+					<div class="field">
+						<label class="field__label" for="f-website">Website</label>
+						<input
+							id="f-website"
+							type="url"
+							class="field__input"
+							placeholder="https://..."
+							[value]="profileForm.website().value()"
+							(input)="set('website', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Telegram -->
+					<div class="field">
+						<label class="field__label" for="f-telegram">Telegram</label>
+						<input
+							id="f-telegram"
+							type="text"
+							class="field__input"
+							placeholder="@username"
+							[value]="profileForm.telegram().value()"
+							(input)="set('telegram', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- GitHub -->
+					<div class="field">
+						<label class="field__label" for="f-github">GitHub</label>
+						<input
+							id="f-github"
+							type="text"
+							class="field__input"
+							placeholder="username"
+							[value]="profileForm.github().value()"
+							(input)="set('github', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Company -->
+					<div class="field">
+						<label class="field__label" for="f-company">Company</label>
+						<input
+							id="f-company"
+							type="text"
+							class="field__input"
+							placeholder="Acme Inc."
+							[value]="profileForm.company().value()"
+							(input)="set('company', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Position -->
+					<div class="field">
+						<label class="field__label" for="f-position">Position</label>
+						<input
+							id="f-position"
+							type="text"
+							class="field__input"
+							placeholder="Frontend Developer"
+							[value]="profileForm.position().value()"
+							(input)="set('position', $any($event.target).value)"
+						/>
+					</div>
+
+					<!-- Bio -->
+					<div class="field field--full">
+						<label class="field__label" for="f-bio">Bio</label>
+						<textarea
+							id="f-bio"
+							class="field__input field__textarea"
+							placeholder="A few words about you…"
+							rows="3"
+							(input)="set('bio', $any($event.target).value)"
+						>{{ profileForm.bio().value() }}</textarea>
+					</div>
+				</div>
+
+				<div class="mt-8 flex justify-end gap-3">
+					<a routerLink="/" class="btn btn--secondary">Cancel</a>
+					<button type="submit" class="btn btn--primary">Save & show QR</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

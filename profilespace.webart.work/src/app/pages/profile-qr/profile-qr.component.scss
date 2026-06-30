@@ -1,0 +1,99 @@
+:host {
+	display: block;
+	min-height: 100%;
+	background: linear-gradient(
+		180deg,
+		var(--c-bg-primary) 0%,
+		color-mix(in srgb, var(--c-bg-primary) 86%, var(--c-bg-secondary)) 100%
+	);
+	color: var(--c-text);
+}
+
+.card {
+	border-radius: calc(var(--radius-card) * 2);
+	border: 1px solid color-mix(in srgb, var(--c-border) 72%, transparent);
+	background: color-mix(in srgb, var(--c-bg-secondary) 84%, transparent);
+	box-shadow: var(--shadow-md);
+	backdrop-filter: blur(16px);
+}
+
+.label {
+	font-size: 0.72rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.18em;
+	color: var(--c-text-muted);
+}
+
+.qr-wrap {
+	border-radius: calc(var(--radius-card) * 1.5);
+	padding: 1rem;
+	background: #fff;
+	box-shadow: var(--shadow-sm);
+}
+
+.json-preview {
+	margin-top: 1rem;
+	padding: 1rem;
+	border-radius: var(--radius-card);
+	background: var(--c-bg-primary);
+	font-size: 0.78rem;
+	line-height: 1.7;
+	color: var(--c-text);
+	white-space: pre-wrap;
+	word-break: break-all;
+	overflow: auto;
+	max-height: 400px;
+}
+
+.empty-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 5rem;
+	height: 5rem;
+	border-radius: 999px;
+	background: color-mix(in srgb, var(--c-primary) 10%, transparent);
+	color: var(--c-primary);
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 2.75rem;
+	padding: 0.625rem 1.25rem;
+	border-radius: 999px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	border: none;
+	transition: opacity 0.15s;
+
+	&:hover {
+		opacity: 0.85;
+	}
+
+	&--primary {
+		background: var(--c-primary);
+		color: #fff;
+	}
+
+	&--secondary {
+		border: 1px solid var(--c-border);
+		background: color-mix(in srgb, var(--c-bg-primary) 78%, transparent);
+		color: var(--c-text-strong);
+	}
+
+	&--ghost {
+		border: 1px solid color-mix(in srgb, var(--c-border) 50%, transparent);
+		background: transparent;
+		color: var(--c-text-muted);
+
+		&:hover {
+			background: color-mix(in srgb, var(--c-bg-secondary) 60%, transparent);
+			opacity: 1;
+		}
+	}
+}

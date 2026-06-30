@@ -1,0 +1,125 @@
+/* ─────────────────────────────────────────────────────────
+   Fine Dining (light) / Luxury Dark
+   ───────────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+
+  /* brand — deep navy primary, burnished gold secondary */
+  --c-primary:          #1A1A2E;
+  --c-primary-hover:    #2A2A48;
+  --c-secondary:        #C9A961;
+  --c-secondary-hover:  #B8954A;
+
+  /* surfaces — champagne ivory */
+  --c-bg-primary:   #FAF8F3;
+  --c-bg-secondary: #FFFFFF;
+  --c-bg-tertiary:  #F2EEE3;
+
+  /* content */
+  --c-text:         #2A2A2A;
+  --c-text-strong:  #1A1A2E;
+  --c-text-muted:   #6E6E72;
+  --c-placeholder:  #6E6E7299;
+
+  /* borders & elevation */
+  --c-border:   #E2DCCB;
+  --shadow-sm:  0 1px 4px rgba(26, 26, 46, 0.06);
+  --shadow-md:  0 10px 30px rgba(26, 26, 46, 0.10);
+
+  /* typography */
+  --ff-base:    'Lora', 'Crimson Text', Georgia, serif;
+  --ff-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --fs:         16px;
+  --lh-base:    1.7;
+  --letter-spacing: 0.15px;
+
+  /* radius */
+  --radius:      8px;
+  --radius-card: 14px;
+  --radius-btn:  999px;
+
+  /* spacing */
+  --sp-0:  0px;
+  --sp-1:  4px;
+  --sp-2:  8px;
+  --sp-3:  12px;
+  --sp-4:  16px;
+  --sp-5:  20px;
+  --sp-6:  24px;
+  --sp-7:  32px;
+  --sp-8:  40px;
+  --sp-10: 48px;
+  --sp-12: 56px;
+  --sp-16: 72px;
+  --sp-20: 96px;
+
+  /* layout */
+  --container: 1210px;
+  --gutter:    10px;
+
+  /* motion */
+  --easing:       cubic-bezier(0.25, 0.8, 0.25, 1);
+  --motion-fast:  0.15s;
+  --motion:       0.25s;
+  --motion-slow:  0.4s;
+
+  /* focus */
+  --focus-ring: 0 0 0 3px rgba(201, 169, 97, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Luxury Dark
+   ───────────────────────────────────────────────────────── */
+html[data-mode='dark'] {
+  color-scheme: dark;
+
+  /* brand — rich gold primary, champagne secondary */
+  --c-primary:         #D4AF37;
+  --c-primary-hover:   #E5C247;
+  --c-secondary:       #F4D4A8;
+  --c-secondary-hover: #F8DEB8;
+
+  /* surfaces — jet black */
+  --c-bg-primary:   #0F0F0F;
+  --c-bg-secondary: #1A1A1A;
+  --c-bg-tertiary:  #2A2A2A;
+
+  /* content */
+  --c-text:        #D6D0C2;
+  --c-text-strong: #F5F1EB;
+  --c-text-muted:  #A39D7F;
+  --c-placeholder: #A39D7Fcc;
+
+  /* borders & elevation */
+  --c-border:  #2D2D2D;
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.55);
+
+  /* focus */
+  --focus-ring: 0 0 0 3px rgba(212, 175, 55, 0.45);
+}
+
+/* ─────────────────────────────────────────────────────────
+   Density / radius overrides
+   ───────────────────────────────────────────────────────── */
+html[data-density='compact'] {
+  --sp-1:  2px;
+  --sp-2:  6px;
+  --sp-3:  10px;
+  --sp-4:  14px;
+  --sp-5:  18px;
+  --sp-6:  22px;
+  --sp-7:  28px;
+  --sp-8:  36px;
+  --sp-10: 42px;
+  --sp-12: 48px;
+  --sp-16: 64px;
+  --sp-20: 84px;
+  --gutter: 8px;
+}
+
+html[data-radius='square'] {
+  --radius:      0px;
+  --radius-card: 0px;
+  --radius-btn:  0px;
+}
