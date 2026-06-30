@@ -1,19 +1,22 @@
 <footer class="border-t border-[var(--c-border)] bg-[var(--c-bg-secondary)]">
 	<div class="mx-auto grid max-w-[var(--container)] gap-10 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(14rem,0.8fr)] lg:gap-16">
-		<div class="grid gap-5 sm:grid-cols-[7rem_minmax(0,1fr)] sm:items-start">
-			<div
-				class="overflow-hidden rounded-[calc(var(--radius-card)*1.8)] border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-3 shadow-[var(--shadow-sm)]"
+		<div class="flex items-start gap-5">
+			<a
+				[translate]="{ ariaLabel: 'Перейти на головну сторінку' }"
+				class="mt-3 shrink-0"
+				routerLink="/"
 			>
 				<img
-					class="h-auto w-full rounded-[calc(var(--radius-card)*1.1)] object-cover"
-					[src]="companyImage()"
-					[translate]="{ alt: companyImageAlt() }"
+					class="h-16 w-auto"
+					[translate]="{ alt: 'Логотип Profile Space' }"
+					ngSrc="logo.png"
+					width="132"
+					height="40"
 					loading="lazy"
-					decoding="async"
 				/>
-			</div>
+			</a>
 
-			<div>
+			<div class="pl-4">
 				<p
 					class="text-sm font-semibold uppercase tracking-[0.2em] text-[var(--c-text-muted)]"
 					translate

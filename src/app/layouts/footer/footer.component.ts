@@ -1,3 +1,4 @@
+import { NgOptimizedImage } from '@angular/common';
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateDirective } from '@wawjs/ngx-translate';
@@ -10,7 +11,7 @@ interface FooterPageLink {
 
 @Component({
 	selector: 'app-footer',
-	imports: [RouterLink, TranslateDirective],
+	imports: [NgOptimizedImage, RouterLink, TranslateDirective],
 	templateUrl: './footer.component.html',
 })
 export class FooterComponent {
@@ -19,13 +20,8 @@ export class FooterComponent {
 	protected readonly company = this._companyService.company;
 	protected readonly currentYear = new Date().getFullYear();
 	protected readonly pageLinks = computed<FooterPageLink[]>(() => [
-		{
-			label: 'Головна',
-			path: '/',
-		},
+		{ label: 'Головна', path: '/' },
+		{ label: 'Редагувати профіль', path: '/edit' },
+		{ label: 'Сканувати QR', path: '/scan' },
 	]);
-	protected readonly companyImage = computed(() => this.company().image || 'logo.png');
-	protected readonly companyImageAlt = computed(() =>
-		this.company().name ? this.company().name : 'Зображення компанії',
-	);
 }
