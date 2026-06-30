@@ -37,7 +37,13 @@
 							<h2 class="profile-name">{{ p.name }}</h2>
 							@if (p.position || p.company) {
 								<p class="profile-sub">
-										{{ [p.position, p.company].filter(item => !!item).join(' · ') }}
+									{{ [p.position, p.company].filter(item => !!item).join(' · ') }}
+								</p>
+							}
+						</div>
+					</div>
+
+					@if (p.bio) {
 						<p class="profile-bio">{{ p.bio }}</p>
 					}
 

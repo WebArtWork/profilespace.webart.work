@@ -3,7 +3,10 @@
 	"version": "22.0.0",
 	"scripts": {
 		"start": "ng serve",
-		"build": "ng build --configuration=production && node tools/seo/generate-static-seo.mjs"
+		"build": "ng build --configuration=production && node tools/seo/generate-static-seo.mjs",
+		"build:mobile": "ng build --configuration=production",
+		"cap:sync": "npm run build:mobile && npx cap sync android",
+		"cap:open": "npx cap open android"
 	},
 	"dependencies": {
 		"@angular/common": "22.0.1",
@@ -14,6 +17,9 @@
 		"@angular/platform-server": "22.0.1",
 		"@angular/router": "22.0.1",
 		"@angular/ssr": "22.0.1",
+		"@capacitor/android": "^8.4.1",
+		"@capacitor/cli": "^8.4.1",
+		"@capacitor/core": "^8.4.1",
 		"@wawjs/ngx-core": "22.0.0",
 		"@wawjs/ngx-default": "22.0.0",
 		"@wawjs/ngx-translate": "22.0.0",
