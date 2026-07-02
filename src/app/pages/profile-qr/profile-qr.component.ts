@@ -1,6 +1,5 @@
 import { Component, PLATFORM_ID, OnInit, OnDestroy, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { RouterLink } from '@angular/router';
 import { QrCodeComponent } from 'ng-qrcode';
 import { TranslateDirective } from '@wawjs/ngx-translate';
 import { Filesystem, Directory } from '@capacitor/filesystem';
@@ -8,7 +7,7 @@ import { Share } from '@capacitor/share';
 import { ProfileStorageService } from '../../shared/profile/profile-storage.service';
 
 @Component({
-	imports: [RouterLink, QrCodeComponent, TranslateDirective],
+	imports: [QrCodeComponent, TranslateDirective],
 	templateUrl: './profile-qr.component.html',
 	styleUrl: './profile-qr.component.scss',
 })
@@ -18,7 +17,6 @@ export class ProfileQrComponent implements OnInit, OnDestroy {
 
 	protected readonly hasProfile = this.profileService.hasProfile;
 	protected readonly profileJson = this.profileService.profileJson;
-	protected qrMenuOpen = false;
 
 	ngOnInit(): void {
 		if (this.isBrowser) document.body.style.overflow = 'hidden';
@@ -28,16 +26,11 @@ export class ProfileQrComponent implements OnInit, OnDestroy {
 		if (this.isBrowser) document.body.style.overflow = '';
 	}
 
-	clear(): void {
-		this.profileService.clear();
-	}
-
 	private getCanvas(): HTMLCanvasElement | null {
 		return document.querySelector('qr-code canvas') as HTMLCanvasElement;
 	}
 
 	protected async saveQr(): Promise<void> {
-		this.qrMenuOpen = false;
 		const canvas = this.getCanvas();
 		if (!canvas) return;
 		const base64 = canvas.toDataURL('image/png').split(',')[1];
@@ -58,7 +51,6 @@ export class ProfileQrComponent implements OnInit, OnDestroy {
 	}
 
 	protected async shareQr(): Promise<void> {
-		this.qrMenuOpen = false;
 		const canvas = this.getCanvas();
 		if (!canvas) return;
 		const base64 = canvas.toDataURL('image/png').split(',')[1];

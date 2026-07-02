@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { TranslateDirective } from '@wawjs/ngx-translate';
 import { form, schema, required } from '@angular/forms/signals';
 import { ProfileStorageService } from '../../shared/profile/profile-storage.service';
@@ -19,7 +19,7 @@ interface ProfileFormModel {
 }
 
 @Component({
-	imports: [RouterLink, TranslateDirective],
+	imports: [TranslateDirective],
 	templateUrl: './profile-form.component.html',
 	styleUrl: './profile-form.component.scss',
 })
@@ -64,6 +64,11 @@ export class ProfileFormComponent {
 		}
 
 		this.profileService.save(profile);
+		this.router.navigate(['/']);
+	}
+
+	protected clear(): void {
+		this.profileService.clear();
 		this.router.navigate(['/']);
 	}
 }

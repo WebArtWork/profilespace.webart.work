@@ -10,8 +10,8 @@ import { TranslateDirective } from '@wawjs/ngx-translate';
 })
 export class BottomNavComponent {
 	protected readonly items = [
-		{ path: '/', icon: 'qr_code_2', label: 'Мій QR', exact: true },
-		{ path: '/edit', icon: 'edit', label: 'Профіль', exact: false },
 		{ path: '/scan', icon: 'qr_code_scanner', label: 'Сканер', exact: false },
+		{ path: '/edit', icon: 'edit', label: 'Профіль', exact: false },
+		{ path: '/', icon: 'qr_code_2', label: 'QR', exact: true },
 	];
 }

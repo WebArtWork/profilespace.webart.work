@@ -174,15 +174,11 @@
 }
 
 /* ── Empty state ───────────────────────────── */
-.empty-icon {
+.qr-wrap--empty {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 5rem;
-	height: 5rem;
-	border-radius: 999px;
-	background: color-mix(in srgb, var(--c-primary) 10%, transparent);
-	color: var(--c-primary);
+	color: color-mix(in srgb, var(--c-text-muted) 70%, transparent);
 }
 
 .btn {
@@ -212,70 +208,5 @@
 		border: 1px solid var(--c-border);
 		background: color-mix(in srgb, var(--c-bg-primary) 78%, transparent);
 		color: var(--c-text-strong);
-	}
-
-/* ── QR action menu ─────────────────────────── */
-.qr-action {
-	position: relative;
-	width: 100%;
-
-	&__backdrop {
-		position: fixed;
-		inset: 0;
-		z-index: 10;
-	}
-
-	&__menu {
-		position: absolute;
-		bottom: calc(100% + 0.5rem);
-		left: 0;
-		right: 0;
-		z-index: 11;
-		border-radius: var(--radius-card);
-		border: 1px solid color-mix(in srgb, var(--c-border) 72%, transparent);
-		background: var(--c-bg-secondary);
-		box-shadow: var(--shadow-md);
-		overflow: hidden;
-	}
-
-	&__item {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		width: 100%;
-		padding: 0.875rem 1rem;
-		background: none;
-		border: none;
-		color: var(--c-text-strong);
-		font-size: 0.95rem;
-		font-weight: 500;
-		cursor: pointer;
-		text-align: left;
-
-		.material-symbols-outlined { color: var(--c-primary); font-size: 20px; }
-
-		&:not(:last-child) { border-bottom: 1px solid color-mix(in srgb, var(--c-border) 50%, transparent); }
-		&:hover { background: color-mix(in srgb, var(--c-primary) 8%, transparent); }
-	}
-}
-
-	&--download {
-		background: color-mix(in srgb, var(--c-primary) 12%, transparent);
-		color: var(--c-primary);
-		border: 1.5px solid color-mix(in srgb, var(--c-primary) 35%, transparent);
-		font-weight: 600;
-
-		&:hover { background: color-mix(in srgb, var(--c-primary) 20%, transparent); opacity: 1; }
-	}
-
-	&--ghost {
-		border: 1px solid color-mix(in srgb, var(--c-border) 50%, transparent);
-		background: transparent;
-		color: var(--c-text-muted);
-
-		&:hover {
-			background: color-mix(in srgb, var(--c-bg-secondary) 60%, transparent);
-			opacity: 1;
-		}
 	}
 }

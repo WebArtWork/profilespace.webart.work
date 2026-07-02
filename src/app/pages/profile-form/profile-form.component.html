@@ -3,7 +3,6 @@
 		<div class="card p-6 sm:p-8">
 			<div class="mb-6 flex items-center justify-between">
 				<h1 class="text-2xl font-semibold text-[var(--c-text-strong)]" translate>Редагувати профіль</h1>
-				<a routerLink="/" class="btn btn--ghost text-sm" translate>← Назад</a>
 			</div>
 
 			<form (submit)="onSubmit(); $event.preventDefault()" novalidate>
@@ -146,8 +145,8 @@
 				</div>
 
 				<div class="mt-8 flex justify-end gap-3">
-					<a routerLink="/" class="btn btn--secondary" translate>Скасувати</a>
-					<button type="submit" class="btn btn--primary" translate>Зберегти та показати QR</button>
+					<button type="button" class="btn btn--secondary" (click)="clear()" translate>Очистити</button>
+					<button type="submit" class="btn btn--primary" translate>Зберегти</button>
 				</div>
 			</form>
 		</div>

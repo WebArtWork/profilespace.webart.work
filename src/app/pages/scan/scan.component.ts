@@ -8,7 +8,7 @@ import {
 	viewChild,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { ScannedProfileService } from '../../shared/profile/scanned-profile.service';
 import { QrProfile } from '../../shared/profile/profile.model';
@@ -16,7 +16,7 @@ import { QrProfile } from '../../shared/profile/profile.model';
 type ScanState = 'requesting' | 'scanning' | 'error';
 
 @Component({
-	imports: [RouterLink, TranslateDirective],
+	imports: [TranslateDirective],
 	templateUrl: './scan.component.html',
 	styleUrl: './scan.component.scss',
 })
