@@ -49,6 +49,13 @@ export class PhotoStorageService {
 		return this._resize(file, 40, 0.08);
 	}
 
+	/** Generate thumbnail from existing stored photo (if thumb is missing) */
+	async ensureThumb(): Promise<void> {
+		if (!this.isBrowser || this._thumb() || !this._photo()) return;
+		const thumb = await this._resizeFromDataUrl(this._photo()!, 40, 0.08);
+		this.saveThumb(thumb);
+	}
+
 	private _resize(file: File, maxDim: number, quality: number): Promise<string> {
 		return new Promise((resolve, reject) => {
 			const reader = new FileReader();
@@ -71,6 +78,26 @@ export class PhotoStorageService {
 			};
 			reader.onerror = reject;
 			reader.readAsDataURL(file);
+		});
+	}
+
+	private _resizeFromDataUrl(dataUrl: string, maxDim: number, quality: number): Promise<string> {
+		return new Promise((resolve, reject) => {
+			const img = new Image();
+			img.onload = () => {
+				const size = Math.min(img.width, img.height);
+				const canvas = document.createElement('canvas');
+				const dim = Math.min(size, maxDim);
+				canvas.width = dim;
+				canvas.height = dim;
+				const ctx = canvas.getContext('2d')!;
+				const sx = (img.width - size) / 2;
+				const sy = (img.height - size) / 2;
+				ctx.drawImage(img, sx, sy, size, size, 0, 0, dim, dim);
+				resolve(canvas.toDataURL('image/jpeg', quality));
+			};
+			img.onerror = reject;
+			img.src = dataUrl;
 		});
 	}
 }

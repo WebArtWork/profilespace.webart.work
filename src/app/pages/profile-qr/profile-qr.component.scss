@@ -1,6 +1,9 @@
 :host {
-	display: block;
-	min-height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	overflow: hidden;
 	background: linear-gradient(
 		180deg,
 		var(--c-bg-primary) 0%,
@@ -210,6 +213,51 @@
 		background: color-mix(in srgb, var(--c-bg-primary) 78%, transparent);
 		color: var(--c-text-strong);
 	}
+
+/* ── QR action menu ─────────────────────────── */
+.qr-action {
+	position: relative;
+	width: 100%;
+
+	&__backdrop {
+		position: fixed;
+		inset: 0;
+		z-index: 10;
+	}
+
+	&__menu {
+		position: absolute;
+		bottom: calc(100% + 0.5rem);
+		left: 0;
+		right: 0;
+		z-index: 11;
+		border-radius: var(--radius-card);
+		border: 1px solid color-mix(in srgb, var(--c-border) 72%, transparent);
+		background: var(--c-bg-secondary);
+		box-shadow: var(--shadow-md);
+		overflow: hidden;
+	}
+
+	&__item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		width: 100%;
+		padding: 0.875rem 1rem;
+		background: none;
+		border: none;
+		color: var(--c-text-strong);
+		font-size: 0.95rem;
+		font-weight: 500;
+		cursor: pointer;
+		text-align: left;
+
+		.material-symbols-outlined { color: var(--c-primary); font-size: 20px; }
+
+		&:not(:last-child) { border-bottom: 1px solid color-mix(in srgb, var(--c-border) 50%, transparent); }
+		&:hover { background: color-mix(in srgb, var(--c-primary) 8%, transparent); }
+	}
+}
 
 	&--download {
 		background: color-mix(in srgb, var(--c-primary) 12%, transparent);

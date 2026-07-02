@@ -13,8 +13,6 @@ export class ViewProfileComponent {
 	protected readonly scanned = inject(ScannedProfileService);
 	protected readonly profile = this.scanned.profile;
 	protected readonly Boolean = Boolean;
-	protected lightboxOpen = false;
-
 	constructor() {
 		if (!this.scanned.profile()) {
 			this.router.navigate(['/scan']);

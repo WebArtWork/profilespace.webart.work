@@ -8,45 +8,6 @@
 
 			<form (submit)="onSubmit(); $event.preventDefault()" novalidate>
 
-				<!-- Photo picker -->
-				<div class="photo-picker">
-					<button type="button" class="photo-btn" (click)="toggleMenu()" [translate]="{ ariaLabel: photo() ? 'Змінити фото' : 'Додати фото' }">
-						@if (photo()) {
-							<img class="photo-preview" [src]="photo()!" [translate]="{ alt: 'Фото профілю' }" />
-						} @else {
-							<span class="photo-placeholder">
-								<span class="material-symbols-outlined" style="font-size:32px">add_a_photo</span>
-								<span class="photo-placeholder__text" translate>Додати фото</span>
-							</span>
-						}
-						<span class="photo-btn__badge">
-							<span class="material-symbols-outlined" style="font-size:16px">edit</span>
-						</span>
-					</button>
-
-					@if (menuOpen()) {
-						<div class="photo-menu">
-							<button type="button" class="photo-menu__item" (click)="openCamera()">
-								<span class="material-symbols-outlined" style="font-size:20px">camera_alt</span>
-								<span translate>Зробити фото</span>
-							</button>
-							<button type="button" class="photo-menu__item" (click)="openGallery()">
-								<span class="material-symbols-outlined" style="font-size:20px">photo_library</span>
-								<span translate>Вибрати з галереї</span>
-							</button>
-							@if (photo()) {
-								<button type="button" class="photo-menu__item photo-menu__item--danger" (click)="removePhoto()">
-									<span class="material-symbols-outlined" style="font-size:20px">delete</span>
-									<span translate>Видалити фото</span>
-								</button>
-							}
-						</div>
-					}
-
-					<input #cameraInput type="file" accept="image/*" capture="environment" hidden (change)="onFileSelected($event)" />
-					<input #galleryInput type="file" accept="image/*" hidden (change)="onFileSelected($event)" />
-				</div>
-
 				<div class="fields">
 					<!-- Name -->
 					<div class="field">

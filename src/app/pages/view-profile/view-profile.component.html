@@ -16,13 +16,7 @@
 				<div class="card p-6 sm:p-8">
 					<!-- Name & position -->
 					<div class="profile-hero">
-						<div class="avatar" [class.avatar--clickable]="p.photo" (click)="p.photo && (lightboxOpen = true)" aria-hidden="true">
-							@if (p.photo) {
-								<img class="avatar__photo" [src]="p.photo" [alt]="p.name" />
-							} @else {
-								{{ p.name[0].toUpperCase() }}
-							}
-						</div>
+						<div class="avatar" aria-hidden="true">{{ p.name[0].toUpperCase() }}</div>
 						<div>
 							<h2 class="profile-name">{{ p.name }}</h2>
 							@if (p.position || p.company) {
@@ -120,11 +114,3 @@
 	</div>
 </section>
 
-@if (lightboxOpen && profile()?.photo) {
-	<div class="lightbox" (click)="lightboxOpen = false" role="dialog" aria-modal="true">
-		<img class="lightbox__img" [src]="profile()!.photo!" [alt]="profile()!.name" (click)="$event.stopPropagation()" />
-		<button class="lightbox__close" (click)="lightboxOpen = false" aria-label="Закрити">
-			<span class="material-symbols-outlined" style="font-size:24px">close</span>
-		</button>
-	</div>
-}
