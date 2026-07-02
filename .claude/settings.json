@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(netstat -ano)",
+      "PowerShell(Get-Process -Id 16164)",
+      "Bash(curl -k https://192.168.0.163:4200 -o /dev/null -s -w \"%{http_code}\")",
+      "Bash(curl http://192.168.0.163:4200 -o /dev/null -s -w \"%{http_code}\")",
+      "Bash(node -e \"require\\('sharp'\\)\")",
+      "Bash(node -e \"require\\('jimp'\\)\")",
+      "Bash(node -e ' *)",
+      "Bash(npm uninstall *)"
+    ]
+  }
+}

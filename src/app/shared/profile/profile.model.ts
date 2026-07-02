@@ -9,4 +9,5 @@ export interface QrProfile {
 	company?: string;
 	position?: string;
 	bio?: string;
+	photo?: string;
 }

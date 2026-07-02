@@ -42,6 +42,7 @@
 }
 
 .avatar {
+	flex-shrink: 0;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -52,7 +53,58 @@
 	color: var(--c-primary);
 	font-size: 1.5rem;
 	font-weight: 700;
-	flex-shrink: 0;
+	overflow: hidden;
+
+	&--clickable {
+		cursor: pointer;
+		transition: opacity 0.15s;
+		&:active { opacity: 0.75; }
+	}
+
+	&__photo {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 999px;
+	}
+}
+
+/* ── Lightbox ───────────────────────────────────── */
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	background: rgba(0, 0, 0, 0.88);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+
+	&__img {
+		width: min(80vw, 80vh);
+		height: min(80vw, 80vh);
+		object-fit: cover;
+		border-radius: var(--radius-card);
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+	}
+
+	&__close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 999px;
+		border: none;
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		&:hover { background: rgba(255, 255, 255, 0.25); }
+	}
 }
 
 /* ── Contact rows ────────────────────────────────── */
@@ -71,16 +123,18 @@
 		width: 1.75rem;
 		height: 1.75rem;
 		flex-shrink: 0;
-		color: var(--c-text-muted);
+		color: var(--c-primary);
 	}
 
 	&__link {
-		color: var(--c-primary);
+		color: var(--c-text);
 		text-decoration: none;
 		font-size: 0.9rem;
 		word-break: break-all;
 
-		&:hover {
+		&:hover,
+		&:active {
+			color: var(--c-primary);
 			text-decoration: underline;
 		}
 	}
@@ -89,6 +143,28 @@
 		font-size: 0.9rem;
 		color: var(--c-text);
 	}
+}
+
+/* ── Profile name/sub ────────────────────────────── */
+.profile-name {
+	margin: 0;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: var(--c-text-strong);
+	line-height: 1.25;
+}
+
+.profile-sub {
+	margin: 0.2rem 0 0;
+	font-size: 0.85rem;
+	color: var(--c-text-muted);
+}
+
+.profile-bio {
+	margin-top: 1rem;
+	font-size: 0.9rem;
+	color: var(--c-text);
+	line-height: 1.65;
 }
 
 /* ── Buttons ─────────────────────────────────────── */

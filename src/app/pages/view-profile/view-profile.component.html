@@ -4,23 +4,29 @@
 			<div class="mx-auto max-w-lg">
 				<!-- Header -->
 				<div class="mb-6 flex items-center gap-3">
-					<a routerLink="/scan" class="back-btn" aria-label="Back to scan">
+					<a routerLink="/scan" class="back-btn" [translate]="{ ariaLabel: 'Назад до сканера' }">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M19 12H5M12 19l-7-7 7-7"/>
 						</svg>
 					</a>
-					<h1 class="text-xl font-semibold text-[var(--c-text-strong)]">Profile</h1>
+					<h1 class="text-xl font-semibold text-[var(--c-text-strong)]" translate>Профіль</h1>
 				</div>
 
 				<!-- Profile card -->
 				<div class="card p-6 sm:p-8">
 					<!-- Name & position -->
 					<div class="profile-hero">
-						<div class="avatar" aria-hidden="true">{{ p.name[0].toUpperCase() }}</div>
+						<div class="avatar" [class.avatar--clickable]="p.photo" (click)="p.photo && (lightboxOpen = true)" aria-hidden="true">
+							@if (p.photo) {
+								<img class="avatar__photo" [src]="p.photo" [alt]="p.name" />
+							} @else {
+								{{ p.name[0].toUpperCase() }}
+							}
+						</div>
 						<div>
-							<h2 class="text-2xl font-semibold text-[var(--c-text-strong)]">{{ p.name }}</h2>
+							<h2 class="profile-name">{{ p.name }}</h2>
 							@if (p.position || p.company) {
-								<p class="mt-1 text-[var(--c-text-muted)]">
+								<p class="profile-sub">
 									{{ [p.position, p.company].filter(Boolean).join(' · ') }}
 								</p>
 							}
@@ -28,11 +34,11 @@
 					</div>
 
 					@if (p.bio) {
-						<p class="mt-5 text-[var(--c-text)] leading-relaxed">{{ p.bio }}</p>
+						<p class="profile-bio">{{ p.bio }}</p>
 					}
 
 					<!-- Contact rows -->
-					<dl class="mt-6 space-y-3">
+					<dl class="mt-6 space-y-2">
 						@if (p.email) {
 							<div class="row">
 								<dt class="row__icon">
@@ -104,12 +110,21 @@
 
 				<!-- Actions -->
 				<div class="mt-4 flex justify-center gap-3">
-					<button type="button" class="btn btn--primary" (click)="scanAnother()">
-						Scan another
+					<button type="button" class="btn btn--primary" (click)="scanAnother()" translate>
+						Сканувати ще
 					</button>
-					<a routerLink="/" class="btn btn--secondary">My QR</a>
+					<a routerLink="/" class="btn btn--secondary" translate>Мій QR</a>
 				</div>
 			</div>
 		}
 	</div>
 </section>
+
+@if (lightboxOpen && profile()?.photo) {
+	<div class="lightbox" (click)="lightboxOpen = false" role="dialog" aria-modal="true">
+		<img class="lightbox__img" [src]="profile()!.photo!" [alt]="profile()!.name" (click)="$event.stopPropagation()" />
+		<button class="lightbox__close" (click)="lightboxOpen = false" aria-label="Закрити">
+			<span class="material-symbols-outlined" style="font-size:24px">close</span>
+		</button>
+	</div>
+}

@@ -1,0 +1,15 @@
+<nav class="bottom-nav sm:hidden" aria-label="Навігація">
+	@for (item of items; track item.path) {
+		<a
+			class="bottom-nav__item"
+			[routerLink]="item.path"
+			routerLinkActive="bottom-nav__item--active"
+			[routerLinkActiveOptions]="{ exact: item.exact }"
+		>
+			<span class="material-symbols-outlined bottom-nav__icon" aria-hidden="true">
+				{{ item.icon }}
+			</span>
+			<span class="bottom-nav__label" translate>{{ item.label }}</span>
+		</a>
+	}
+</nav>

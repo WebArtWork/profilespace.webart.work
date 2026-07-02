@@ -47,16 +47,62 @@
 	width: 3.5rem;
 	height: 3.5rem;
 	border-radius: 999px;
-	background: var(--c-primary);
-	color: var(--c-bg-secondary);
-	font-family: var(--ff-display);
+	background: color-mix(in srgb, var(--c-primary) 18%, transparent);
+	color: var(--c-primary);
 	font-size: 1.5rem;
-	font-weight: 600;
-	line-height: 1;
+	font-weight: 700;
+	overflow: hidden;
+
+	&--clickable {
+		cursor: pointer;
+		transition: opacity 0.15s;
+		&:active { opacity: 0.75; }
+	}
+
+	&__photo {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 999px;
+	}
 }
 
-html[data-mode='dark'] .avatar {
-	color: var(--c-bg-primary);
+/* ── Lightbox ───────────────────────────────────── */
+.lightbox {
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+	background: rgba(0, 0, 0, 0.88);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1.5rem;
+
+	&__img {
+		width: min(80vw, 80vh);
+		height: min(80vw, 80vh);
+		object-fit: cover;
+		border-radius: var(--radius-card);
+		box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
+	}
+
+	&__close {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+		width: 2.5rem;
+		height: 2.5rem;
+		border-radius: 999px;
+		border: none;
+		background: rgba(255, 255, 255, 0.15);
+		color: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		cursor: pointer;
+
+		&:hover { background: rgba(255, 255, 255, 0.25); }
+	}
 }
 
 .profile-name {
@@ -90,33 +136,36 @@ html[data-mode='dark'] .avatar {
 .field-row {
 	display: flex;
 	align-items: center;
-	gap: 0.625rem;
-	min-height: 2.25rem;
+	gap: 0.75rem;
+	padding: 0.5rem 0.75rem;
+	border-radius: var(--radius-card);
+	background: color-mix(in srgb, var(--c-bg-primary) 60%, transparent);
 
 	&__icon {
 		flex-shrink: 0;
-		width: 1.5rem;
-		height: 1.5rem;
+		width: 1.75rem;
+		height: 1.75rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: var(--c-secondary);
+		color: var(--c-primary);
 	}
 
 	&__link {
-		font-size: 0.875rem;
+		font-size: 0.9rem;
 		color: var(--c-text);
 		text-decoration: none;
 		word-break: break-all;
 
-		&:hover {
+		&:hover,
+		&:active {
 			color: var(--c-primary);
 			text-decoration: underline;
 		}
 	}
 
 	&__text {
-		font-size: 0.875rem;
+		font-size: 0.9rem;
 		color: var(--c-text);
 	}
 }

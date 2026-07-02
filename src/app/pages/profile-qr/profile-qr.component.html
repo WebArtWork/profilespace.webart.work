@@ -17,10 +17,7 @@
 					<div class="flex flex-wrap justify-center gap-3">
 						<a routerLink="/edit" class="btn btn--primary">Редагувати</a>
 						<a routerLink="/scan" class="btn btn--secondary">Сканувати чужий QR</a>
-						<button type="button" class="btn btn--secondary" (click)="copyJson()">
-							Копіювати JSON
-						</button>
-						<button type="button" class="btn btn--ghost" (click)="clear()">
+<button type="button" class="btn btn--ghost" (click)="clear()">
 							Очистити
 						</button>
 					</div>
@@ -32,7 +29,13 @@
 
 					<!-- Avatar + name -->
 					<div class="profile-hero mt-4">
-						<div class="avatar" aria-hidden="true">{{ p.name[0].toUpperCase() }}</div>
+						<div class="avatar" [class.avatar--clickable]="photo()" (click)="photo() && (lightboxOpen = true)" aria-hidden="true">
+							@if (photo()) {
+								<img class="avatar__photo" [src]="photo()!" [alt]="p.name" />
+							} @else {
+								{{ p.name[0].toUpperCase() }}
+							}
+						</div>
 						<div>
 							<h2 class="profile-name">{{ p.name }}</h2>
 							@if (p.position || p.company) {
@@ -126,3 +129,12 @@
 		}
 	</div>
 </section>
+
+@if (lightboxOpen && photo()) {
+	<div class="lightbox" (click)="lightboxOpen = false" role="dialog" aria-modal="true">
+		<img class="lightbox__img" [src]="photo()!" alt="Фото профілю" (click)="$event.stopPropagation()" />
+		<button class="lightbox__close" (click)="lightboxOpen = false" aria-label="Закрити">
+			<span class="material-symbols-outlined" style="font-size:24px">close</span>
+		</button>
+	</div>
+}

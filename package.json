@@ -3,8 +3,9 @@
 	"version": "22.0.0",
 	"scripts": {
 		"start": "ng serve",
+		"dev:mobile": "ng serve --host 0.0.0.0 --port 4200 --ssl",
 		"build": "ng build --configuration=production && node tools/seo/generate-static-seo.mjs",
-		"build:mobile": "ng build --configuration=production",
+		"build:mobile": "ng build --configuration=mobile",
 		"cap:sync": "npm run build:mobile && npx cap sync android",
 		"cap:open": "npx cap open android"
 	},
@@ -40,6 +41,7 @@
 		"ng-packagr": "22.0.0",
 		"postcss": "8.5.15",
 		"prettier": "3.8.1",
+		"sharp": "^0.35.3",
 		"tailwindcss": "4.1.12",
 		"typescript": "6.0.3",
 		"vitest": "4.1.8"

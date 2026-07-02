@@ -9,13 +9,14 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
+import { TranslateDirective, TranslateService } from '@wawjs/ngx-translate';
 import { ScannedProfileService } from '../../shared/profile/scanned-profile.service';
 import { QrProfile } from '../../shared/profile/profile.model';
 
 type ScanState = 'requesting' | 'scanning' | 'error';
 
 @Component({
-	imports: [RouterLink],
+	imports: [RouterLink, TranslateDirective],
 	templateUrl: './scan.component.html',
 	styleUrl: './scan.component.scss',
 })
@@ -23,6 +24,7 @@ export class ScanComponent {
 	private readonly router = inject(Router);
 	private readonly scannedService = inject(ScannedProfileService);
 	private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+	private readonly t = inject(TranslateService);
 
 	protected readonly videoRef = viewChild<ElementRef<HTMLVideoElement>>('video');
 	protected readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
@@ -52,7 +54,7 @@ export class ScanComponent {
 			this.tick();
 		} catch (err) {
 			this.state.set('error');
-			this.errorMsg.set(err instanceof Error ? err.message : 'Camera access denied');
+			this.errorMsg.set(err instanceof Error ? err.message : this.t.translate('Доступ до камери заборонено')());
 		}
 	}
 
@@ -99,7 +101,7 @@ export class ScanComponent {
 			this.router.navigate(['/view']);
 		} catch {
 			this.state.set('error');
-			this.errorMsg.set('QR code is not a profilespace profile.');
+			this.errorMsg.set(this.t.translate('QR-код не є профілем profilespace.')());
 			if (this.stream) this.startCamera();
 		}
 	}
