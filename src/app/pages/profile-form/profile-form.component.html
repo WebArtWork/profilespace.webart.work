@@ -58,7 +58,7 @@
 							type="text"
 							class="field__input"
 							[class.field__input--error]="profileForm.name().touched() && profileForm.name().invalid()"
-							placeholder="Денис"
+							placeholder="Крістіна"
 							[value]="profileForm.name().value()"
 							(input)="set('name', $any($event.target).value)"
 							(blur)="profileForm.name().markAsTouched()"

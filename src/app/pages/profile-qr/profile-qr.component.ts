@@ -2,11 +2,12 @@ import { Component, PLATFORM_ID, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { QrCodeComponent } from 'ng-qrcode';
+import { TranslateDirective } from '@wawjs/ngx-translate';
 import { ProfileStorageService } from '../../shared/profile/profile-storage.service';
 import { PhotoStorageService } from '../../shared/profile/photo-storage.service';
 
 @Component({
-	imports: [RouterLink, QrCodeComponent],
+	imports: [RouterLink, QrCodeComponent, TranslateDirective],
 	templateUrl: './profile-qr.component.html',
 	styleUrl: './profile-qr.component.scss',
 })
@@ -24,5 +25,14 @@ export class ProfileQrComponent {
 	clear(): void {
 		this.profileService.clear();
 		this.photoService.clear();
+	}
+
+	protected downloadQr(): void {
+		const canvas = document.querySelector('qr-code canvas') as HTMLCanvasElement;
+		if (!canvas) return;
+		const a = document.createElement('a');
+		a.download = 'profile-qr.png';
+		a.href = canvas.toDataURL('image/png');
+		a.click();
 	}
 }

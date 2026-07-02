@@ -6,7 +6,7 @@
 
 				<!-- ── QR Code ───────────────────────────── -->
 				<div class="card flex flex-col items-center gap-6 p-8">
-					<p class="label">Відскануйте для перегляду профілю</p>
+					<p class="label" translate>Відскануйте для перегляду профілю</p>
 
 					@if (isBrowser) {
 						<div class="qr-wrap">
@@ -14,18 +14,20 @@
 						</div>
 					}
 
+					<button type="button" class="btn btn--primary w-full" (click)="downloadQr()" translate>
+						Завантажити QR
+					</button>
+
 					<div class="flex flex-wrap justify-center gap-3">
-						<a routerLink="/edit" class="btn btn--primary">Редагувати</a>
-						<a routerLink="/scan" class="btn btn--secondary">Сканувати чужий QR</a>
-<button type="button" class="btn btn--ghost" (click)="clear()">
-							Очистити
-						</button>
+						<a routerLink="/edit" class="btn btn--download" translate>Редагувати</a>
+						<a routerLink="/scan" class="btn btn--secondary" translate>Сканувати чужий QR</a>
+						<button type="button" class="btn btn--ghost" (click)="clear()" translate>Очистити</button>
 					</div>
 				</div>
 
 				<!-- ── Profile card ──────────────────────── -->
 				<div class="card p-6 sm:p-8">
-					<p class="label">Ваш профіль</p>
+					<p class="label" translate>Ваш профіль</p>
 
 					<!-- Avatar + name -->
 					<div class="profile-hero mt-4">
@@ -116,14 +118,14 @@
 					</svg>
 				</div>
 				<div>
-					<h1 class="text-2xl font-semibold text-[var(--c-text-strong)]">Профіль ще не заповнений</h1>
-					<p class="mt-2 text-[var(--c-text)]">
+					<h1 class="text-2xl font-semibold text-[var(--c-text-strong)]" translate>Профіль ще не заповнений</h1>
+					<p class="mt-2 text-[var(--c-text)]" translate>
 						Заповніть профіль — з'явиться QR-код.
 					</p>
 				</div>
 				<div class="flex flex-wrap justify-center gap-3">
-					<a routerLink="/edit" class="btn btn--primary">Створити профіль</a>
-					<a routerLink="/scan" class="btn btn--secondary">Сканувати чужий QR</a>
+					<a routerLink="/edit" class="btn btn--primary" translate>Створити профіль</a>
+					<a routerLink="/scan" class="btn btn--secondary" translate>Сканувати чужий QR</a>
 				</div>
 			</div>
 		}

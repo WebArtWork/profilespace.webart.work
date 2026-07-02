@@ -211,6 +211,15 @@
 		color: var(--c-text-strong);
 	}
 
+	&--download {
+		background: color-mix(in srgb, var(--c-primary) 12%, transparent);
+		color: var(--c-primary);
+		border: 1.5px solid color-mix(in srgb, var(--c-primary) 35%, transparent);
+		font-weight: 600;
+
+		&:hover { background: color-mix(in srgb, var(--c-primary) 20%, transparent); opacity: 1; }
+	}
+
 	&--ghost {
 		border: 1px solid color-mix(in srgb, var(--c-border) 50%, transparent);
 		background: transparent;
