@@ -26,9 +26,9 @@
   --shadow-sm:  0 1px 4px rgba(26, 26, 46, 0.06);
   --shadow-md:  0 10px 30px rgba(26, 26, 46, 0.10);
 
-  /* typography */
-  --ff-base:    'Lora', 'Crimson Text', Georgia, serif;
-  --ff-display: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  /* typography — native OS font stack so web and the Capacitor app render identically */
+  --ff-base:    -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ff-display: -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --fs:         16px;
   --lh-base:    1.7;
   --letter-spacing: 0.15px;
