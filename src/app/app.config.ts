@@ -15,6 +15,7 @@ import {
 	stripTitleSuffix,
 } from '@wawjs/ngx-default';
 import { provideNgxCore } from '@wawjs/ngx-core';
+import { provideTheme } from '@wawjs/ngx-ui';
 import { provideTranslate } from '@wawjs/ngx-translate';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
@@ -50,6 +51,7 @@ export const appConfig: ApplicationConfig = {
 		}),
 		provideRouter(routes),
 		provideClientHydration(withEventReplay()),
+		provideTheme({ mode: 'light' }),
 		provideTranslate({
 			defaultLanguage: environment.defaultLanguage,
 			languages: environment.languages,

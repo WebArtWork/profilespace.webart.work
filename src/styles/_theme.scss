@@ -4,9 +4,9 @@
 :root {
   color-scheme: light;
 
-  /* brand — deep navy primary, burnished gold secondary */
-  --c-primary:          #1A1A2E;
-  --c-primary-hover:    #2A2A48;
+  /* brand — logo violet primary, burnished gold secondary */
+  --c-primary:          #7C3AED;
+  --c-primary-hover:    #6D28D9;
   --c-secondary:        #C9A961;
   --c-secondary-hover:  #B8954A;
 
@@ -64,7 +64,7 @@
   --motion-slow:  0.4s;
 
   /* focus */
-  --focus-ring: 0 0 0 3px rgba(201, 169, 97, 0.45);
+  --focus-ring: 0 0 0 3px rgba(124, 58, 237, 0.45);
 }
 
 /* ─────────────────────────────────────────────────────────
