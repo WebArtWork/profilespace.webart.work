@@ -30,7 +30,7 @@ jobs:
               run: npm rebuild lightningcss
 
             - name: Build Angular app
-              run: npm run build
+              run: npm run build:deploy
 
             - name: Copy CNAME file
               run: cp CNAME dist/app/browser/
