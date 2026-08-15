@@ -2,8 +2,10 @@ import { Component, PLATFORM_ID, OnInit, OnDestroy, inject } from '@angular/core
 import { isPlatformBrowser } from '@angular/common';
 import { QrCodeComponent } from 'ng-qrcode';
 import { TranslateDirective } from '@wawjs/ngx-translate';
+import { Capacitor } from '@capacitor/core';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Share } from '@capacitor/share';
+import { Media } from '@capacitor-community/media';
 import { ProfileStorageService } from '../../shared/profile/profile-storage.service';
 
 @Component({
@@ -33,8 +35,20 @@ export class ProfileQrComponent implements OnInit, OnDestroy {
 	protected async saveQr(): Promise<void> {
 		const canvas = this.getCanvas();
 		if (!canvas) return;
-		const base64 = canvas.toDataURL('image/png').split(',')[1];
+		const dataUrl = canvas.toDataURL('image/png');
+
+		if (Capacitor.isNativePlatform()) {
+			try {
+				await Media.savePhoto({ path: dataUrl });
+				alert('QR збережено у Галерею');
+			} catch {
+				alert('Не вдалося зберегти QR у Галерею');
+			}
+			return;
+		}
+
 		const fileName = 'profile-qr.png';
+		const base64 = dataUrl.split(',')[1];
 		try {
 			await Filesystem.writeFile({
 				path: `Download/${fileName}`,
@@ -45,7 +59,7 @@ export class ProfileQrComponent implements OnInit, OnDestroy {
 		} catch {
 			const a = document.createElement('a');
 			a.download = fileName;
-			a.href = 'data:image/png;base64,' + base64;
+			a.href = dataUrl;
 			a.click();
 		}
 	}

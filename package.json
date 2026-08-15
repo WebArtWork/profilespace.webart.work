@@ -8,7 +8,9 @@
 		"build:deploy": "npm run build && node tools/seo/generate-static-seo.mjs",
 		"build:mobile": "ng build --configuration=mobile",
 		"cap:sync": "npm run build:mobile && npx cap sync android",
-		"cap:open": "npx cap open android"
+		"cap:sync:ios": "npm run build:mobile && npx cap sync ios",
+		"cap:open": "npx cap open android",
+		"cap:open:ios": "npx cap open ios"
 	},
 	"dependencies": {
 		"@angular/common": "22.0.1",
@@ -19,6 +21,7 @@
 		"@angular/platform-server": "22.0.1",
 		"@angular/router": "22.0.1",
 		"@angular/ssr": "22.0.1",
+		"@capacitor-community/media": "^9.1.0",
 		"@capacitor/android": "^8.4.1",
 		"@capacitor/core": "^8.4.1",
 		"@capacitor/filesystem": "^8.1.2",

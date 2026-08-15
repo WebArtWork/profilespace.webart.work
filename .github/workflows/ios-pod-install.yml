@@ -1,0 +1,50 @@
+name: iOS Pod Install
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - master
+        paths:
+            - 'ios/App/Podfile'
+            - 'package.json'
+
+permissions:
+    contents: write
+
+jobs:
+    pod-install:
+        runs-on: macos-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: '24'
+                  cache: 'npm'
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Build web app
+              run: npm run build:mobile
+
+            - name: Sync Capacitor iOS
+              run: npx cap sync ios
+
+            - name: Pod install
+              run: cd ios/App && pod install --repo-update
+
+            - name: Commit updated Podfile.lock
+              run: |
+                  git config --global user.name "github-actions[bot]"
+                  git config --global user.email "github-actions[bot]@users.noreply.github.com"
+                  if git diff --quiet -- ios/App/Podfile.lock; then
+                    echo "No changes to Podfile.lock"
+                  else
+                    git add ios/App/Podfile.lock
+                    git commit -m "chore: update Podfile.lock via pod install [skip ci]"
+                    git push
+                  fi
