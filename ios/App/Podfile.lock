@@ -1,6 +1,9 @@
 PODS:
   - Capacitor (8.4.1):
     - CapacitorCordova
+  - CapacitorCommunityMedia (9.1.0):
+    - Capacitor
+    - SDWebImage
   - CapacitorCordova (8.4.1)
   - CapacitorFilesystem (8.1.2):
     - Capacitor
@@ -8,9 +11,13 @@ PODS:
   - CapacitorShare (8.0.1):
     - Capacitor
   - IONFilesystemLib (1.1.2)
+  - SDWebImage (5.21.7):
+    - SDWebImage/Core (= 5.21.7)
+  - SDWebImage/Core (5.21.7)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
+  - "CapacitorCommunityMedia (from `../../node_modules/@capacitor-community/media`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorFilesystem (from `../../node_modules/@capacitor/filesystem`)"
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
@@ -18,10 +25,13 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - IONFilesystemLib
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Capacitor:
     :path: "../../node_modules/@capacitor/ios"
+  CapacitorCommunityMedia:
+    :path: "../../node_modules/@capacitor-community/media"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorFilesystem:
@@ -31,11 +41,13 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Capacitor: 35242afe195b1e53c58ca1b827d1b444c5e6602b
+  CapacitorCommunityMedia: 862ba42957f75b74e403fc3a35bb1b286bfe9410
   CapacitorCordova: eebe6bcf807b1b06f3f48237650f96bbcd0eef09
   CapacitorFilesystem: 2db285a1ac6e475cc27cae2e1bea999000f9e2be
   CapacitorShare: 0c58305114538568059bfc07111f22dcb9cb2a82
   IONFilesystemLib: 21a63377696b2d8fab5632ecfb7d2ac67bddb68a
+  SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf
 
-PODFILE CHECKSUM: 99959b314272eefb1fb870cc37faa0d4d6b4bc2d
+PODFILE CHECKSUM: 38dd672eb1bba8eddca513db39532fc970dc4aaf
 
 COCOAPODS: 1.17.0
