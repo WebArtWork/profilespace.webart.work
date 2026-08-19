@@ -1,16 +1,16 @@
 <header
-	class="relative z-50 border-b border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 backdrop-blur supports-[backdrop-filter]:bg-[var(--c-bg-secondary)]/80"
+	class="relative z-50 border-b border-[var(--c-border)] bg-[var(--c-bg-secondary)]/95 pt-[env(safe-area-inset-top)] backdrop-blur supports-[backdrop-filter]:bg-[var(--c-bg-secondary)]/80"
 >
 	<div
-		class="mx-auto flex min-h-16 w-full max-w-[var(--container)] items-center justify-between overflow-visible px-4 py-3 sm:px-6"
+		class="mx-auto flex min-h-14 w-full max-w-[var(--container)] items-center justify-between gap-2 overflow-visible px-[max(0.75rem,env(safe-area-inset-left))] py-2 sm:min-h-16 sm:px-6 sm:py-3"
 	>
 		<a
 			[translate]="{ ariaLabel: 'Перейти на головну сторінку' }"
-			class="inline-flex items-center gap-3"
+			class="min-w-0 inline-flex items-center gap-2 sm:gap-3"
 			routerLink="/"
 		>
 			<img
-				class="h-10 w-auto"
+				class="h-11 w-auto max-w-36 object-contain sm:h-12 sm:max-w-none"
 				[translate]="{ alt: 'Логотип проєкту' }"
 				[ngSrc]="logoSrc()"
 				width="132"
@@ -18,18 +18,18 @@
 				priority
 			/>
 			@if (company().name) {
-				<span class="text-sm font-semibold tracking-[0.16em] text-[var(--c-text-strong)]">
+				<span class="hidden truncate text-sm font-semibold tracking-[0.16em] text-[var(--c-text-strong)] min-[420px]:block">
 					{{ company().name }}
 				</span>
 			}
 		</a>
 
-		<div class="flex items-center gap-2">
+		<div class="flex shrink-0 items-center gap-1.5 sm:gap-2">
 			<div
 				class="relative flex items-center gap-1 rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] p-1 shadow-[var(--shadow-sm)]"
 			>
 				<button
-					class="theme-interactive theme-focus inline-flex h-9 items-center gap-2 rounded-full px-3 text-sm font-medium text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)]"
+					class="theme-interactive theme-focus inline-flex h-9 items-center gap-2 rounded-full px-2 text-sm font-medium text-[var(--c-text)] hover:bg-[var(--c-bg-tertiary)] sm:px-3"
 					[attr.aria-label]="languageCycleLabel()"
 					(click)="nextLanguage()"
 					type="button"
@@ -80,7 +80,7 @@
 			</div>
 
 			<button
-				class="theme-interactive theme-focus inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)]"
+				class="theme-interactive theme-focus inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--c-border)] bg-[var(--c-bg-primary)] text-[var(--c-text-strong)] hover:bg-[var(--c-bg-tertiary)] sm:h-11 sm:w-11"
 				[attr.aria-label]="toggleLabel()"
 				(click)="toggleMode()"
 				type="button"

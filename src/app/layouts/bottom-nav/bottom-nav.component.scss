@@ -9,6 +9,8 @@
 	border-top: 1px solid var(--c-border);
 	background: color-mix(in srgb, var(--c-bg-secondary) 95%, transparent);
 	backdrop-filter: blur(16px);
+	padding-left: env(safe-area-inset-left);
+	padding-right: env(safe-area-inset-right);
 	padding-bottom: env(safe-area-inset-bottom);
 
 	&__item {

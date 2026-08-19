@@ -1,6 +1,6 @@
 <section class="page">
 	<div class="mx-auto max-w-2xl px-4 py-4 sm:px-6 sm:py-12">
-		<div class="card p-6 sm:p-8">
+		<div class="card p-4 sm:p-8">
 			<div class="mb-6 flex items-center justify-between">
 				<h1 class="text-2xl font-semibold text-[var(--c-text-strong)]" translate>Редагувати профіль</h1>
 			</div>
@@ -137,14 +137,14 @@
 						<textarea
 							id="f-bio"
 							class="field__input field__textarea"
-							placeholder="Кілька слів про вас…"
+							[translate]="{ placeholder: 'Кілька слів про вас…' }"
 							rows="3"
 							(input)="set('bio', $any($event.target).value)"
 						>{{ profileForm.bio().value() }}</textarea>
 					</div>
 				</div>
 
-				<div class="mt-8 flex justify-end gap-3">
+				<div class="mt-8 grid grid-cols-2 gap-3 sm:flex sm:justify-end">
 					<button type="button" class="btn btn--secondary" (click)="clear()" translate>Очистити</button>
 					<button type="submit" class="btn btn--primary" translate>Зберегти</button>
 				</div>

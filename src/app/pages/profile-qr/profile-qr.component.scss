@@ -1,15 +1,21 @@
 :host {
+	position: absolute;
+	inset: 0;
+	bottom: calc(4.5rem + env(safe-area-inset-bottom));
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
-	height: 100%;
-	overflow: hidden;
+	overflow: auto;
 	background: linear-gradient(
 		180deg,
 		var(--c-bg-primary) 0%,
 		color-mix(in srgb, var(--c-bg-primary) 86%, var(--c-bg-secondary)) 100%
 	);
 	color: var(--c-text);
+
+	@media (min-width: 640px) {
+		bottom: 0;
+	}
 }
 
 .card {
@@ -29,10 +35,22 @@
 }
 
 .qr-wrap {
+	width: min(100%, 17rem);
 	border-radius: calc(var(--radius-card) * 1.5);
 	padding: 1rem;
 	background: #fff;
 	box-shadow: var(--shadow-sm);
+}
+
+.qr-wrap qr-code {
+	display: block;
+	width: 100%;
+}
+
+.qr-wrap qr-code canvas {
+	display: block;
+	width: 100% !important;
+	height: auto !important;
 }
 
 /* ── Profile card ───────────────────────────── */

@@ -11,9 +11,9 @@ import { TopbarComponent } from './layouts/topbar/topbar.component';
 	selector: 'app-root',
 	imports: [RouterOutlet, TopbarComponent, BottomNavComponent],
 	template: `
-		<div class="flex min-h-screen flex-col">
+		<div class="flex min-h-dvh min-w-0 flex-col">
 			<app-topbar />
-			<main class="flex-1 pb-[4.5rem] sm:pb-0">
+			<main class="relative min-w-0 flex-1 pb-[calc(4.5rem+env(safe-area-inset-bottom))] sm:pb-0">
 				<router-outlet />
 			</main>
 			<app-bottom-nav />

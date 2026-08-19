@@ -13,7 +13,7 @@
 				</div>
 
 				<!-- Profile card -->
-				<div class="card p-6 sm:p-8">
+				<div class="card p-4 sm:p-8">
 					<!-- Name & position -->
 					<div class="profile-hero">
 						<div class="avatar" aria-hidden="true">{{ p.name[0].toUpperCase() }}</div>
@@ -103,7 +103,7 @@
 				</div>
 
 				<!-- Actions -->
-				<div class="mt-4 flex justify-center gap-3">
+				<div class="mt-4 grid grid-cols-2 gap-3 sm:flex sm:justify-center">
 					<button type="button" class="btn btn--primary" (click)="scanAnother()" translate>
 						Сканувати ще
 					</button>
@@ -113,4 +113,3 @@
 		}
 	</div>
 </section>
-
